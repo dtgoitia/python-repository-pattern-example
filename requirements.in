@@ -1,0 +1,7 @@
+black
+chitchat
+flake8
+isort
+mypy
+pip-tools
+pytest
