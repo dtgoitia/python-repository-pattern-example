@@ -13,5 +13,5 @@ class Account:
 @attr.s(auto_attribs=True)
 class Transaction:
     from_account: Account
-    # to_account: Account
+    to_account: Account
     quantity: int  # in cents

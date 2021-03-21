@@ -32,7 +32,7 @@ transaction_table = Table(
     metadata,
     Column("id", Integer, primary_key=True, autoincrement=True),
     Column("from_account_id", ForeignKey("accounts.id"), nullable=False),
-    # Column("to_account", ForeignKey("accounts.id"), nullable=False),
+    Column("to_account_id", ForeignKey("accounts.id"), nullable=False),
     Column("quantity", Integer, nullable=False),
 )
 
@@ -53,7 +53,16 @@ def start_mappers():
         model.Account,
         account_table,
         properties={
-            "transactions": relationship(model.Transaction, backref="from_account")
+            "transactions_out": relationship(
+                model.Transaction,
+                backref="from_account",
+                foreign_keys=transaction_table.columns.from_account_id,
+            ),
+            "transactions_in": relationship(
+                model.Transaction,
+                backref="to_account",
+                foreign_keys=transaction_table.columns.to_account_id,
+            ),
         },
     )
 

@@ -26,12 +26,12 @@ def main() -> None:
 
     transaction_a = Transaction(
         from_account=account_a,
-        # to_account=account_b,
+        to_account=account_b,
         quantity=100,
     )
     transaction_b = Transaction(
         from_account=account_a,
-        # to_account=account_b,
+        to_account=account_b,
         quantity=100,
     )
 
