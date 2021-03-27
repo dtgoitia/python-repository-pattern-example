@@ -17,4 +17,7 @@ def get_config() -> AppConfig:
     if _CACHED_CONFIG:
         return _CACHED_CONFIG
 
-    return AppConfig(database_uri=os.environ["DATABASE_URI"], debug=True)
+    return AppConfig(
+        database_uri=os.environ["DATABASE_URI"],
+        debug=os.environ.get("DEBUG", False).lower() == "true",
+    )

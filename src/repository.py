@@ -20,6 +20,7 @@ mapper_registry = sqlalchemy.orm.registry()
 # 'metadata' will hold in-memory the information of all tables
 metadata: MetaData = mapper_registry.metadata
 
+# latest schema
 account_table = Table(
     "accounts",
     metadata,
