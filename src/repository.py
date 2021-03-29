@@ -112,11 +112,10 @@ class Repository:
 
 
 def create_session(engine: Engine) -> Session:
-    SessionClass = sessionmaker(
+    session = Session(
         bind=engine,
         # to be compatible with SQLAlchemy 2.0
         # https://docs.sqlalchemy.org/en/14/orm/session_basics.html#querying-2-0-style
         future=True,
     )
-    session_instance: Session = SessionClass()
-    return session_instance
+    return session
