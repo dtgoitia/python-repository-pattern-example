@@ -13,7 +13,7 @@ from src import model
 from src.config import get_config
 
 config = get_config()
-engine: Engine = create_engine(f"sqlite:///{config.database_uri}", echo=config.debug)
+engine: Engine = create_engine(config.database_uri, echo=config.debug)
 
 
 mapper_registry = sqlalchemy.orm.registry()
