@@ -37,10 +37,12 @@ transaction_table = Table(
     Column("quantity", Integer, nullable=False),
 )
 
-# TODO: can I bind session instead of engine? the session wraps an Engine and
-# Connections, right? There must be a way
+# Let SQLAlchemy know which SQL flavour shuold be used to build the tables
 metadata.bind = engine
-metadata.create_all(checkfirst=True)
+
+
+def create_tables(engine: Engine) -> None:
+    metadata.create_all(engine, checkfirst=True)
 
 
 def start_mappers():
