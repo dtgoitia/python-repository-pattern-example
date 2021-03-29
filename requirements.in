@@ -1,11 +1,3 @@
 alembic
 attrs
-black
-chitchat
-flake8
-ipdb
-isort
-mypy
-pip-tools
-pytest
 SQLAlchemy
