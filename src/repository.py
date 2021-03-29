@@ -1,12 +1,12 @@
-from typing import Dict, List
+from typing import List
 
 import sqlalchemy
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.engine import create_engine
 from sqlalchemy.engine.base import Engine
-from sqlalchemy.orm import mapper, relationship
-from sqlalchemy.orm.session import Session, sessionmaker
-from sqlalchemy.sql.expression import column, select
+from sqlalchemy.orm import relationship
+from sqlalchemy.orm.session import Session
+from sqlalchemy.sql.expression import select
 from sqlalchemy.sql.schema import MetaData, Table
 
 from src import model
