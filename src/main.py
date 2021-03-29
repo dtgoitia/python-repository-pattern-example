@@ -1,18 +1,4 @@
-from pathlib import Path
-
-from sqlalchemy import select
-
-from src.config import get_config
 from src.model import Account, Transaction
-
-
-def delete_db_file() -> None:
-    path = Path(get_config().database_uri)
-    if path.exists():
-        path.unlink()
-        print("DB deleted")
-    else:
-        print("DB didn't exist")
 
 
 def main() -> None:
@@ -52,5 +38,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    delete_db_file()
     main()
