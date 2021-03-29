@@ -47,7 +47,7 @@ def start_mappers():
     """Mappers must be initialized before any domain instance is read or written.
 
     The reason is that the mapping initialization modifies the domain model class, so
-    that the domain model class becomes aware of the persistence layer (only on runtime).
+    that the domain model class becomes aware of the persistence layer - only on runtime
     """
 
     mapper_registry.map_imperatively(
@@ -71,12 +71,20 @@ def start_mappers():
 
 
 class Repository:
+    _orm_mappers_initialized = False
+
     def __init__(self, session: Session) -> None:
-        # self._engine = engine
-        # TODO: do you need to do any assertions?
         self._session = session
+        self._start_mappers()
+
+    @classmethod
+    def _start_mappers(cls) -> None:
+        """On runtime, mappers must only be initialized once."""
+        if cls._orm_mappers_initialized:
+            return
 
         start_mappers()
+        cls._orm_mappers_initialized = True
 
     def add_account(self, account: model.Account) -> None:
         self._session.add(account)
